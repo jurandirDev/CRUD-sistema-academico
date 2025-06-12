@@ -57,19 +57,26 @@ function addAluno() {
 //Ler alunos
 function listarAlunos() {
   const lista = document.getElementById("listaAlunos");
+  const mensagemVazia = document.getElementById("mensagemVazia");
   lista.innerHTML = "";
 
   const alunos = JSON.parse(localStorage.getItem("alunos")) || [];
 
-  alunos.forEach((aluno, index) => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${aluno.nome}</strong> - ${aluno.curso} - ${aluno.matricula}
-      <button onclick="editarAluno(${index})">Editar</button>
-      <button onclick="removerAluno(${index})">Remover</button>
-    `;
-    lista.appendChild(li);
-  });
+  if (alunos.length === 0) {
+    mensagemVazia.style.display = "block"; // mostra mensagem
+  } else {
+    mensagemVazia.style.display = "none"; // esconde mensagem
+
+    alunos.forEach((aluno, index) => {
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <strong>${aluno.nome}</strong> - ${aluno.curso} - ${aluno.matricula}
+        <button onclick="editarAluno(${index})">Editar</button>
+        <button onclick="removerAluno(${index})">Remover</button>
+      `;
+      lista.appendChild(li);
+    });
+  }
 }
 
 //Deletar aluno
@@ -87,7 +94,13 @@ function editarAluno(index) {
 
   const novoNome = prompt("Editar nome:", aluno.nome);
   const novoCurso = prompt("Editar curso:", aluno.curso);
-  const novaMatricula = prompt("Editar matrícula:", aluno.matricula);
+  
+   let novaMatricula = prompt("Editar matrícula (somente números):", aluno.matricula);
+  // Validação simples para aceitar só números
+  if (!novaMatricula || !/^\d+$/.test(novaMatricula)) {
+    alert("Matrícula inválida. Use apenas números.");
+    return; // cancela edição se matrícula inválida
+  }
 
   if (novoNome && novoCurso && novaMatricula) {
     alunos[index] = { nome: novoNome, curso: novoCurso, matricula: novaMatricula };
@@ -100,4 +113,3 @@ function editarAluno(index) {
 if (window.location.pathname.includes("dashboard.html")) {
   listarAlunos();
 }
-

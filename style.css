@@ -1,35 +1,66 @@
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #b0247c;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
     width: 300px;
     margin: 50px auto;
-    background: #fff;
-    padding: 20px;
+    background: #082c2c;
+    padding: 30px 30px;
     border-radius: 8px;
-    box-shadow: 0 0 10px #ccc;
+    box-shadow: 0 0 10px #cccccc;
 }
 
-input {
-    width: 100%;
-    padding: 8px;
-    margin: 5px 0;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
+.container h2 {
     color: #fff;
-    border: none;
-    cursor: pointer;
-    margin: 5px 0;
+    text-align: center;
 }
 
-button:hover {
-    background: #0056b3;
+.container h3 {
+    color: #fff;
+    text-align: center;
+}
+
+.container p {
+   color: #fff;
+}
+
+.container p a {
+   color: #72827f;
+   text-decoration: none;
+}
+
+.container p a:hover {
+   text-decoration: underline;
+}
+
+.container button {
+  width: 100%;
+  padding: 12px;
+  margin: 5px 0;
+  background-color: #f0940c;
+  color: white;
+  border-radius: 8px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+   
+input {
+    width: 92%;
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    border: none;
+    border-radius: 6px;
+}
+
+.container button:hover {
+  background-color: #c67d08;
 }
 
 ul {
@@ -41,4 +72,21 @@ li {
     background: #eee;
     padding: 10px;
     margin: 5px 0;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+#mensagemVazia {
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
 }
